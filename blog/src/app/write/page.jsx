@@ -186,11 +186,10 @@
 
 
 
-
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
 import ReactQuill from "react-quill";
@@ -207,6 +206,12 @@ const WritePage = () => {
   const [value, setValue] = useState("");
   const [title, setTitle] = useState("");
   const [catSlug, setCatSlug] = useState("");
+
+  useEffect(() => {
+    if (typeof document !== "undefined") {
+      console.log("Client-side rendering confirmed!");
+    }
+  }, []);
 
   const handleFileUpload = async () => {
     if (!file) {
@@ -245,14 +250,16 @@ const WritePage = () => {
   };
 
   const handleInsertImage = (index) => {
+    if (typeof document === "undefined") return;
+
     const imageToInsert = uploadedImages[index];
 
     const updatedContent = `${value}<div class="inserted-image-container">
-      <Image src="${imageToInsert}" alt="Uploaded Image" className="inserted-image" width={500} height={300} />
+      <img src="${imageToInsert}" alt="Uploaded Image" class="inserted-image" />
     </div>`;
 
     setValue(updatedContent);
-    setUploadedImages((prev) => prev.filter((_, i) => i !== index)); // Remove inserted image from the list
+    setUploadedImages((prev) => prev.filter((_, i) => i !== index));
   };
 
   const handleSubmit = async () => {
@@ -338,11 +345,11 @@ const WritePage = () => {
           <h4>Uploaded Images:</h4>
           {uploadedImages.map((image, index) => (
             <div key={index} className={styles.imageItem}>
-              <Image
+              {/* Fix: Using regular <img> instead of <Image> */}
+              <img
                 src={image}
                 alt={`Uploaded-${index}`}
-                width={100}
-                height={100}
+                style={{ maxWidth: "100px" }}
               />
               <button
                 className={styles.insertButton}
