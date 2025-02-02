@@ -3,7 +3,10 @@ import path from "path";
 import { writeFile } from "fs/promises";
 import { getAuthSession } from "@/utils/auth";
 
-// Disable the body parser (already supported in Next.js app router)
+// Use the new export for the runtime setting
+export const runtime = 'edge'; // This specifies the edge runtime if needed
+
+// Disable body parser for file upload handling (Next.js app router)
 export const config = {
   api: {
     bodyParser: false,
@@ -12,17 +15,20 @@ export const config = {
 
 export const POST = async (req) => {
   const session = await getAuthSession();
-  console.log(session)
-  if (!session ) {
+  console.log(session);
+  
+  if (!session) {
     return new NextResponse(
       JSON.stringify({ message: "Not Authenticated!" }, { status: 401 })
     );
   }
-  if (session.user.email!="debswarnadeep85@gmail.com") {
+
+  if (session.user.email !== "debswarnadeep85@gmail.com") {
     return new NextResponse(
       JSON.stringify({ message: "Uploading is not allowed for you. Please contact us." }, { status: 401 })
     );
   }
+  
   console.log("File upload initiated...");
 
   // Parse the form data from the request
