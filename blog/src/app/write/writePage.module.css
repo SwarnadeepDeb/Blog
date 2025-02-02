@@ -1,0 +1,120 @@
+.container{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.select{
+  margin-bottom: 50px;
+  padding: 10px 20px;
+  margin-left: 50px;
+  width: max-content;
+}
+
+.editor {
+  display: flex;
+  gap: 20px;
+  height: 700px;
+  position: relative;
+}
+
+.button,
+.addButton {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid var(--textColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.addButton {
+  border-color: #1a8917;
+}
+
+.add {
+  display: flex;
+  gap: 20px;
+  background-color: var(--bg);
+  position: absolute;
+  z-index: 999;
+  width: 100%;
+  left: 50px;
+}
+
+.input{
+  padding: 50px;
+  font-size: 64px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: var(--textColor);
+}
+
+.input::placeholder{
+  color: #b3b3b1;
+}
+
+.textArea {
+  width: 100%;
+}
+
+.publish{
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  padding: 10px 20px;
+  border: none;
+  background-color: #1a8917;
+  color: white;
+  cursor: pointer;
+  border-radius: 20px;
+}
+
+
+/* .inserted-image-container {
+  text-align: center;
+  margin: 20px 0;
+  display: flex;
+}
+
+.inserted-image {
+  flex: 1;
+  object-fit: cover;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
+} */
+
+/* Optional: Add some spacing on smaller screens */
+@media (max-width: 768px) {
+  .inserted-image-container {
+    padding: 10px;
+  }
+
+  .inserted-image {
+    max-width: 100%; /* On smaller screens, use the full container width */
+    max-height: 250px; /* Reduce the max height */
+  }
+}
+
+
+
+
+
+.editor-container {
+  width: 100%; /* Full-width container */
+  max-width: 800px; /* Limit the editor's max width */
+  margin: 0 auto; /* Center it */
+  padding: 10px; /* Add some spacing */
+}
+
+@media (max-width: 768px) {
+  .editor-container {
+    max-width: 100%; /* Use full width on small screens */
+    padding: 5px;
+  }
+}

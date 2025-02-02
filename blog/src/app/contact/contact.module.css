@@ -1,0 +1,122 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centers vertically */
+  align-items: center; /* Centers horizontally */
+  background-color: var(--bg);
+  color: var(--textColor);
+  padding: 40px 20px;
+}
+
+.wrapper {
+  max-width: 600px;
+  width: 100%;
+  padding: 50px;
+  background: var(--softBg);
+  border-radius: 12px;
+  box-shadow: 0px 6px 18px rgba(0, 0, 0, 0.12);
+}
+
+.title {
+  font-size: 34px;
+  font-weight: 700;
+  color: var(--textColor);
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.description {
+  font-size: 18px;
+  color: var(--softTextColor);
+  text-align: center;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.input,
+.textarea {
+  width: 100%;
+  padding: 16px;
+  border: 2px solid #ccc; /* Standard border */
+  border-radius: 10px;
+  font-size: 18px;
+  background-color: var(--bg);
+  color: var(--textColor);
+  transition: border 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Hover effect for better UX */
+.input:hover,
+.textarea:hover {
+  border-color: #999;
+}
+
+/* Focus effect for improved visibility */
+.input:focus,
+.textarea:focus {
+  border-color: var(--textColor);
+  box-shadow: 0px 0px 8px rgba(0, 123, 255, 0.3);
+  outline: none;
+}
+
+.textarea {
+  height: 160px;
+  resize: none;
+}
+
+.button {
+  padding: 16px;
+  border: none;
+  border-radius: 10px;
+  background-color: var(--textColor);
+  color: var(--bg);
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: 600;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.button:hover {
+  background-color: var(--softTextColor);
+  transform: translateY(-2px);
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    padding: 40px;
+  }
+  .title {
+    font-size: 30px;
+  }
+  .description {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .wrapper {
+    padding: 30px;
+  }
+  .title {
+    font-size: 26px;
+  }
+  .description {
+    font-size: 14px;
+  }
+  .button {
+    width: 100%;
+  }
+}
